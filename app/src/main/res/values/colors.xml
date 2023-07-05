@@ -2,5 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#16FFFFFF</color>
     <color name="stroke_color">#002D40</color>
 </resources>

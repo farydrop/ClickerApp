@@ -12,5 +12,9 @@ class PoliticActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPoliticBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.ivBackButton.setOnClickListener {
+            onBackPressed()
+        }
     }
 }

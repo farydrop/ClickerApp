@@ -1,5 +1,7 @@
 package com.example.clickerapp.view
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.clickerapp.R
+import com.example.clickerapp.databinding.FragmentScoreRegisterDialogBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,6 +22,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class ScoreRegisterDialogFragment : DialogFragment() {
+
+    private lateinit var binding: FragmentScoreRegisterDialogBinding
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -36,7 +42,12 @@ class ScoreRegisterDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_score_register_dialog, container, false)
+        binding = FragmentScoreRegisterDialogBinding.inflate(inflater,container,false)
+
+        //dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#56FFFFFF")))
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        return binding.root
     }
 
     companion object {
