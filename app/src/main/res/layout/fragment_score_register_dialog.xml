@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".view.ScoreRegisterDialogFragment"
-    android:background="@drawable/white_stroke">
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/white_stroke"
         android:orientation="vertical">
 
         <TextView
@@ -21,10 +22,12 @@
             android:textColor="@color/white"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="15dp"
-            android:layout_marginStart="66dp"
-            android:layout_marginEnd="66dp"/>
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:gravity="center"/>
 
         <TextView
+            android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/timer_start"
@@ -44,12 +47,16 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"/>
         
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:layout_width="269dp"
             android:layout_height="45dp"
             android:background="@drawable/white_stroke"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="36dp"/>
+            android:layout_marginBottom="36dp"
+            android:textColor="@color/white"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:fontFamily="@font/impact"/>
 
         <Button
             android:id="@+id/btnSave"

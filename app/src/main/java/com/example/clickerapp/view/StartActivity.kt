@@ -1,16 +1,9 @@
 package com.example.clickerapp.view
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
-import androidx.core.graphics.drawable.toDrawable
-import com.example.clickerapp.R
 import com.example.clickerapp.databinding.ActivityStartBinding
-import com.example.clickerapp.model.Ball
 import com.example.clickerapp.viewmodel.StartViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -40,6 +33,9 @@ class StartActivity : AppCompatActivity() {
 
         viewModel.showDialogFragment.observe(this) {
             val dialog = ScoreRegisterDialogFragment()
+            val bundle = Bundle()
+            bundle.putString("TIMER", it)
+            dialog.arguments = bundle
             dialog.show(this@StartActivity.supportFragmentManager, "ScoreRegisterDialog")
         }
 

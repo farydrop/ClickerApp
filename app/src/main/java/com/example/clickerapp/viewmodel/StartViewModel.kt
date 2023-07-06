@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.clickerapp.R
 import com.example.clickerapp.common.SingleLiveData
 import com.example.clickerapp.common.SingleLiveDataEmpty
-import com.example.clickerapp.model.Ball
+import com.example.clickerapp.model.User
 import kotlinx.coroutines.launch
 import java.util.Timer
 import kotlin.concurrent.schedule
@@ -18,8 +18,8 @@ class StartViewModel : ViewModel() {
     val imageState = MutableLiveData<Int>()
     val timerState = MutableLiveData<String>()
     val backPressed = SingleLiveDataEmpty()
-    val showDialogFragment = SingleLiveDataEmpty()
-    private val data = ArrayList<Ball>()
+    val showDialogFragment = SingleLiveData<String>()
+    private val data = ArrayList<User>()
     private var backgroundImageIndex = 0
     private var buttonPressCount = 0
     private val timer = Timer()
@@ -80,7 +80,9 @@ class StartViewModel : ViewModel() {
         if (backgroundImageIndex >= ballsImage.size) {
             backgroundImageIndex = 0
             boom()
-            showDialogFragment.call()
+            isRunning = false
+            val handler = Handler(Looper.getMainLooper())
+            handler.postDelayed({ showDialogFragment.value = timerState.value }, 1000)
         }
 
         updateBackgroundImage()

@@ -1,39 +1,30 @@
 package com.example.clickerapp.view
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.clickerapp.R
 import com.example.clickerapp.databinding.FragmentScoreRegisterDialogBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+//private const val ARG_PARAM1 = "param1"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ScoreRegisterDialogFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ScoreRegisterDialogFragment : DialogFragment() {
 
     private lateinit var binding: FragmentScoreRegisterDialogBinding
 
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var time: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            time = it.getString("TIMER", "")
         }
     }
 
@@ -44,28 +35,31 @@ class ScoreRegisterDialogFragment : DialogFragment() {
         // Inflate the layout for this fragment
         binding = FragmentScoreRegisterDialogBinding.inflate(inflater,container,false)
 
-        //dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#56FFFFFF")))
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#56FFFFFF")))
+        dialog?.setCancelable(false)
+        //dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        binding.tvTime.text = time
+        binding.btnSave.setOnClickListener {
+            val intent = Intent(requireContext(), ResultActivity::class.java)
+            intent.putExtra("TIMER",time)
+            startActivity(intent)
+            dismiss()
+        }
 
         return binding.root
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ScoreRegisterDialogFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
+        private const val TIMER = "timer"
+        private const val USER_NAME = "user_name"
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(timer: String) =
             ScoreRegisterDialogFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putString(TIMER, timer)
+                    //putString(USER_NAME,userName)
                 }
             }
     }
