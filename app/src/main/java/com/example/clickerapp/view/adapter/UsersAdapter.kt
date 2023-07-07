@@ -2,11 +2,13 @@ package com.example.clickerapp.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.clickerapp.database.User
 import com.example.clickerapp.databinding.ResultItemBinding
-import com.example.clickerapp.model.User
+import java.util.ArrayList
 
-class UsersAdapter(private val usersList: ArrayList<User>) : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
+class UsersAdapter(private val userList: List<User>) : ListAdapter<User, UsersAdapter.UserViewHolder>(UserDiffCallback()) {
 
     //private var usersList = emptyList<User>()
 
@@ -28,11 +30,9 @@ class UsersAdapter(private val usersList: ArrayList<User>) : RecyclerView.Adapte
         )
     }
 
-    override fun getItemCount(): Int = usersList.size
-
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        val users = usersList[position]
-        holder.userName.text = users.name
+        val users = getItem(position)
+        holder.userName.text = users.user_name
         holder.time.text = users.time.toString()
     }
 

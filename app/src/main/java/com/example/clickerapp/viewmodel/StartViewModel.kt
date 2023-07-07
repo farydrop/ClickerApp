@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.clickerapp.R
 import com.example.clickerapp.common.SingleLiveData
 import com.example.clickerapp.common.SingleLiveDataEmpty
-import com.example.clickerapp.model.User
 import kotlinx.coroutines.launch
 import java.util.Timer
 import kotlin.concurrent.schedule
@@ -19,7 +18,7 @@ class StartViewModel : ViewModel() {
     val timerState = MutableLiveData<String>()
     val backPressed = SingleLiveDataEmpty()
     val showDialogFragment = SingleLiveData<String>()
-    private val data = ArrayList<User>()
+    //private val data = ArrayList<User>()
     private var backgroundImageIndex = 0
     private var buttonPressCount = 0
     private val timer = Timer()

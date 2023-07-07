@@ -48,6 +48,7 @@
             android:layout_marginBottom="16dp"/>
         
         <EditText
+            android:id="@+id/etEnterName"
             android:layout_width="269dp"
             android:layout_height="45dp"
             android:background="@drawable/white_stroke"

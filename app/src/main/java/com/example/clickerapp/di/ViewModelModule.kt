@@ -10,4 +10,5 @@ val viewModelModule = module {
     viewModel { MainViewModel() }
     viewModel { StartViewModel() }
     viewModel { ResultViewModel() }
+    //viewModel { ScoreRegisterViewModel(get()) }
 }

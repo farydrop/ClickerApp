@@ -3,6 +3,7 @@ package com.example.clickerapp.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.clickerapp.R
 import com.example.clickerapp.databinding.ActivityStartBinding
 import com.example.clickerapp.viewmodel.StartViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,6 +38,9 @@ class StartActivity : AppCompatActivity() {
             bundle.putString("TIMER", it)
             dialog.arguments = bundle
             dialog.show(this@StartActivity.supportFragmentManager, "ScoreRegisterDialog")
+            /*supportFragmentManager.beginTransaction()
+                .replace(R.id.scoreContainer, ScoreRegisterDialogFragment())
+                .commit()*/
         }
 
         binding.ivBackButton.setOnClickListener {
