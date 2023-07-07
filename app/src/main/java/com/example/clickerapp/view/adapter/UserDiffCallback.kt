@@ -1,7 +1,7 @@
 package com.example.clickerapp.view.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.clickerapp.database.User
+import com.example.clickerapp.model.User
 
 class UserDiffCallback: DiffUtil.ItemCallback<User>( ) {
     override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {

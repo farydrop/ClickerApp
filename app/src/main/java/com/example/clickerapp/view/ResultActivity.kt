@@ -33,21 +33,29 @@ class ResultActivity : AppCompatActivity() {
             finish()
         }
 
-        val db = Room.databaseBuilder(
+        /*val db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "data-database"
         ).build()
-        val userDao = db.userDao()
+        val userDao = db.userDao()*/
 
-        GlobalScope.launch {
+        viewModel.getUsers()
+        viewModel.userList.observe(this){
+            usersAdapter = UsersAdapter()
+            binding.rvResult.adapter = usersAdapter
+            usersAdapter!!.submitList(it)
+            usersAdapter?.notifyDataSetChanged()
+        }
+
+        /*GlobalScope.launch {
             val allData = userDao.getAll()
             withContext(Dispatchers.Main) {
-                usersAdapter = UsersAdapter(allData)
+                usersAdapter = UsersAdapter()
                 Log.d("MyTag",allData.toString())
                 binding.rvResult.adapter = usersAdapter
                 usersAdapter!!.submitList(allData)
                 usersAdapter?.notifyDataSetChanged()
             }
-        }
+        }*/
     }
 }

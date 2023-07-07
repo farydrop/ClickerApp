@@ -4,13 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.clickerapp.database.User
+import com.example.clickerapp.model.User
 import com.example.clickerapp.databinding.ResultItemBinding
-import java.util.ArrayList
 
-class UsersAdapter(private val userList: List<User>) : ListAdapter<User, UsersAdapter.UserViewHolder>(UserDiffCallback()) {
-
-    //private var usersList = emptyList<User>()
+class UsersAdapter : ListAdapter<User, UsersAdapter.UserViewHolder>(UserDiffCallback()) {
 
     class UserViewHolder(private val binding: ResultItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -35,10 +32,4 @@ class UsersAdapter(private val userList: List<User>) : ListAdapter<User, UsersAd
         holder.userName.text = users.user_name
         holder.time.text = users.time.toString()
     }
-
-    /*fun setList(users: List<User>) {
-        usersList = users
-        notifyDataSetChanged()
-    }*/
-
 }

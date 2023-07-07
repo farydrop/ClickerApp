@@ -33,14 +33,8 @@ class StartActivity : AppCompatActivity() {
         }
 
         viewModel.showDialogFragment.observe(this) {
-            val dialog = ScoreRegisterDialogFragment()
-            val bundle = Bundle()
-            bundle.putString("TIMER", it)
-            dialog.arguments = bundle
+            val dialog = ScoreRegisterDialogFragment.newInstance(it)
             dialog.show(this@StartActivity.supportFragmentManager, "ScoreRegisterDialog")
-            /*supportFragmentManager.beginTransaction()
-                .replace(R.id.scoreContainer, ScoreRegisterDialogFragment())
-                .commit()*/
         }
 
         binding.ivBackButton.setOnClickListener {

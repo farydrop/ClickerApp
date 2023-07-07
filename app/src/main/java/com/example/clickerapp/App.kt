@@ -3,6 +3,7 @@ package com.example.clickerapp
 import android.app.Application
 import com.example.clickerapp.database.UserRepository
 import com.example.clickerapp.di.daoModule
+import com.example.clickerapp.di.repositoryModule
 import com.example.clickerapp.di.viewModelModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -25,7 +26,7 @@ class App : Application() {
             // Reference Android context
             androidContext(this@App)
             // Load modules
-            modules( viewModelModule, daoModule )
+            modules( repositoryModule, viewModelModule, daoModule )
         }
     }
 }
