@@ -40,7 +40,6 @@ class ScoreRegisterDialogFragment : DialogFragment() {
             name = binding.etEnterName.text.toString()
             viewModel.insertUser(name!!, time!!)
             startActivity(Intent(requireContext(), ResultActivity::class.java))
-            //dismiss()
             activity?.finish()
 
         }

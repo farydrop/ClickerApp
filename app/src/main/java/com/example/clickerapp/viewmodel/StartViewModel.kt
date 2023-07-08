@@ -31,7 +31,7 @@ class StartViewModel : ViewModel() {
         R.drawable.ball_8,
         R.drawable.ball_9,
         R.drawable.ball_10,
-        /*R.drawable.ball_11,
+        R.drawable.ball_11,
         R.drawable.ball_12,
         R.drawable.ball_13,
         R.drawable.ball_14,
@@ -50,7 +50,7 @@ class StartViewModel : ViewModel() {
         R.drawable.ball_27,
         R.drawable.ball_28,
         R.drawable.ball_29,
-        R.drawable.ball_30*/
+        R.drawable.ball_30
     )
     private val boomImage =
         arrayListOf<Int>(R.drawable.boom_1, R.drawable.boom_2, R.drawable.boom_3, R.drawable.boom_4)
@@ -71,8 +71,6 @@ class StartViewModel : ViewModel() {
             backgroundImageIndex = 0
             boomAction()
             isTimeRunning = false
-            //val handler = Handler(Looper.getMainLooper())
-            //handler.postDelayed({ showDialogFragment.value = timerState.value }, 1000)
             viewModelScope.launch {
                 delay(1000)
                 showDialogFragment.value = timerState.value
@@ -100,20 +98,6 @@ class StartViewModel : ViewModel() {
     }
 
     fun onRunTimer() {
-        /*val handler = Handler(Looper.getMainLooper())
-        handler.post(object : Runnable {
-            override fun run() {
-                val minutes = (seconds % 3600) / 60
-                val secs = seconds % 60
-                val time = String.format("%02d:%02d", minutes, secs)
-                timerState.value = time
-                if (isRunning) {
-                    seconds++
-                }
-                handler.postDelayed(this, 1000)
-            }
-        })*/
-
         viewModelScope.launch {
             var seconds = 0
             while (true) {
