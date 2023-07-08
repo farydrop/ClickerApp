@@ -1,6 +1,6 @@
 # Мобильное Android приложение: Clicker App
 
-![Clicker App](app_screenshot.png)
+<img width="333" alt="app_screenshot" src="https://github.com/farydrop/ClickerApp/assets/53113225/bcd16ffc-f271-4159-8e83-62e4cb5cf3a4">
 
 ## Стек технологий
 
