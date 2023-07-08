@@ -30,6 +30,6 @@ class UsersAdapter : ListAdapter<User, UsersAdapter.UserViewHolder>(UserDiffCall
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val users = getItem(position)
         holder.userName.text = users.user_name
-        holder.time.text = users.time.toString()
+        holder.time.text = users.time
     }
 }

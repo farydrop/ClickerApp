@@ -17,6 +17,7 @@ class ScoreRegisterDialogFragment : DialogFragment() {
     private lateinit var binding: FragmentScoreRegisterDialogBinding
     private val viewModel: ScoreRegisterViewModel by viewModel()
     private var time: String? = null
+    private var name: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,31 +32,14 @@ class ScoreRegisterDialogFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentScoreRegisterDialogBinding.inflate(inflater, container, false)
-
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#56FFFFFF")))
         dialog?.setCancelable(false)
 
-
-
-        /*val db = Room.databaseBuilder(
-            requireContext().applicationContext,
-            AppDatabase::class.java, "data-database"
-        ).build()
-        val userDao = db?.userDao()*/
-
-
-
-        val intent = Intent(requireContext(), ResultActivity::class.java)
         binding.tvTime.text = time
         binding.btnSave.setOnClickListener {
-            val name = binding.etEnterName.text.toString()
-            /*GlobalScope.launch {
-                val data = User(name,time!!)
-                userDao?.insert(data)
-            }*/
-            viewModel.insertUser(name,time!!)
-            startActivity(intent)
-            dismiss()
+            name = binding.etEnterName.text.toString()
+            viewModel.insertUser(name!!, time!!)
+            startActivity(Intent(requireContext(), ResultActivity::class.java))
             activity?.finish()
 
         }
@@ -70,7 +54,6 @@ class ScoreRegisterDialogFragment : DialogFragment() {
             ScoreRegisterDialogFragment().apply {
                 arguments = Bundle().apply {
                     putString(TIME, timer)
-                    //putString(USER_NAME,userName)
                 }
             }
     }

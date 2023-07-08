@@ -3,7 +3,6 @@ package com.example.clickerapp.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.clickerapp.R
 import com.example.clickerapp.databinding.ActivityStartBinding
 import com.example.clickerapp.viewmodel.StartViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -18,14 +17,9 @@ class StartActivity : AppCompatActivity() {
         binding = ActivityStartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.runTimer()
-
+        viewModel.onRunTimer()
         viewModel.imageState.observe(this) {
             binding.ivBall.setImageResource(it)
-        }
-
-        viewModel.backPressed.observe(this){
-            onBackPressed()
         }
 
         viewModel.timerState.observe(this){
@@ -38,14 +32,13 @@ class StartActivity : AppCompatActivity() {
         }
 
         binding.ivBackButton.setOnClickListener {
-            viewModel.onBackPress()
+            onBackPressedDispatcher.onBackPressed()
         }
 
         binding.ivBall.setOnClickListener {
             binding.ivClick.visibility = View.INVISIBLE
-            viewModel.ballButtonTapped()
+            viewModel.onBallClick()
         }
-        viewModel.updateBackgroundImage()
 
     }
 }
