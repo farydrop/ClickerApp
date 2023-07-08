@@ -1,7 +1,7 @@
 # Мобильное Android приложение: Clicker App
 
-<img width="300" alt="app_screenshot" src="https://github.com/farydrop/ClickerApp/assets/53113225/bcd16ffc-f271-4159-8e83-62e4cb5cf3a4">
-<img width="300" alt="Снимок экрана 2023-07-08 в 03 25 22" src="https://github.com/farydrop/ClickerApp/assets/53113225/26db5f02-a3e3-497c-861e-3075efed0185">
+<img width="300" alt="Снимок экрана 2023-07-08 в 03 26 45" src="https://github.com/farydrop/ClickerApp/assets/53113225/7745eef4-95e5-4310-9f95-ccf048240e50">
+<img width="300" alt="Снимок экрана 2023-07-08 в 03 26 45" src="https://github.com/farydrop/ClickerApp/assets/53113225/fc7da010-824c-46a3-872b-ce05aa7ac628">
 
 ## Стек технологий
 
