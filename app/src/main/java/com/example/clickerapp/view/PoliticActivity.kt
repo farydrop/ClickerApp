@@ -14,7 +14,7 @@ class PoliticActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.ivBackButton.setOnClickListener {
-            onBackPressed()
+            finish()
         }
     }
 }

@@ -29,15 +29,8 @@ class ResultActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.ivBackButton.setOnClickListener {
-            viewModel.onBackPress()
             finish()
         }
-
-        /*val db = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java, "data-database"
-        ).build()
-        val userDao = db.userDao()*/
 
         viewModel.getUsers()
         viewModel.userList.observe(this){
@@ -46,16 +39,5 @@ class ResultActivity : AppCompatActivity() {
             usersAdapter!!.submitList(it)
             usersAdapter?.notifyDataSetChanged()
         }
-
-        /*GlobalScope.launch {
-            val allData = userDao.getAll()
-            withContext(Dispatchers.Main) {
-                usersAdapter = UsersAdapter()
-                Log.d("MyTag",allData.toString())
-                binding.rvResult.adapter = usersAdapter
-                usersAdapter!!.submitList(allData)
-                usersAdapter?.notifyDataSetChanged()
-            }
-        }*/
     }
 }
