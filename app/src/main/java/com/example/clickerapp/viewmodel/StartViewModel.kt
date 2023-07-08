@@ -1,14 +1,14 @@
 package com.example.clickerapp.viewmodel
 
-import android.os.Handler
-import android.os.Looper
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.clickerapp.R
 import com.example.clickerapp.common.SingleLiveData
-import com.example.clickerapp.common.SingleLiveDataEmpty
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Timer
 import kotlin.concurrent.schedule
 
@@ -55,8 +55,7 @@ class StartViewModel : ViewModel() {
     private val boomImage =
         arrayListOf<Int>(R.drawable.boom_1, R.drawable.boom_2, R.drawable.boom_3, R.drawable.boom_4)
     private var currentBoomIndex = 0
-    private var seconds: Int = 0
-    private var isRunning: Boolean = true
+    private var isTimeRunning: Boolean = true
 
     fun onBallClick() {
         buttonPressCount++
@@ -71,9 +70,13 @@ class StartViewModel : ViewModel() {
         if (backgroundImageIndex >= ballsImage.size) {
             backgroundImageIndex = 0
             boomAction()
-            isRunning = false
-            val handler = Handler(Looper.getMainLooper())
-            handler.postDelayed({ showDialogFragment.value = timerState.value }, 1000)
+            isTimeRunning = false
+            //val handler = Handler(Looper.getMainLooper())
+            //handler.postDelayed({ showDialogFragment.value = timerState.value }, 1000)
+            viewModelScope.launch {
+                delay(1000)
+                showDialogFragment.value = timerState.value
+            }
         }
         onUpdateBallImage()
     }
@@ -97,7 +100,7 @@ class StartViewModel : ViewModel() {
     }
 
     fun onRunTimer() {
-        val handler = Handler(Looper.getMainLooper())
+        /*val handler = Handler(Looper.getMainLooper())
         handler.post(object : Runnable {
             override fun run() {
                 val minutes = (seconds % 3600) / 60
@@ -109,7 +112,23 @@ class StartViewModel : ViewModel() {
                 }
                 handler.postDelayed(this, 1000)
             }
-        })
+        })*/
+
+        viewModelScope.launch {
+            var seconds = 0
+            while (true) {
+                val minutes = (seconds % 3600) / 60
+                val secs = seconds % 60
+                val time = String.format("%02d:%02d", minutes, secs)
+                withContext(Dispatchers.Main) {
+                    timerState.value = time
+                }
+                if (isTimeRunning) {
+                    seconds++
+                }
+                delay(1000)
+            }
+        }
     }
 
 }
