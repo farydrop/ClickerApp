@@ -9,20 +9,3 @@ interface UserRepository {
     suspend fun insert(user: User)
     fun getAll(): List<User>
 }
-
-
-/*
-class UserRepository(private val userDao: UserDao) {
-
-    //val allUsers: Flow<Array<User>> = userDao.getAll()
-
-    @MainThread
-    suspend fun insert(user: User) {
-        userDao.insert(user)
-    }
-
-    @MainThread
-    suspend fun getAll(): List<User> {
-        return userDao.getAll()
-    }
-}*/
